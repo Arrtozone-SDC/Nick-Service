@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon server/server.js",
-    "start-oh": "webpack -d --watch"
+    "start-oh": "webpack -d --watch",
+    "fetch-pics": "node database/generateStaticURLs.js"
   },
   "repository": {
     "type": "git",
