@@ -19,7 +19,7 @@ function generateBaseSquaredSeeds(base = 32){
     return seeds;
 }
 
-function generateExponantialSeeds(base, desiredPowerOfBase = 5){
+function generateExponentialSeeds(base, desiredPowerOfBase = 5){
     let pow = desiredPowerOfBase;
     if(pow === 0){
        return [];
@@ -48,7 +48,7 @@ function generateExponantialSeeds(base, desiredPowerOfBase = 5){
        }
     }
       
-function evenPowerSets(seeds){
+  function evenPowerSets(seeds){
     console.log('Even Power Sets')
     let newSquaredSet = generateBaseSquaredSeeds(base);
     let workingSet = [];
@@ -70,4 +70,4 @@ function evenPowerSets(seeds){
 // console.log(test1Million.length)
 
 module.exports.generateBaseSquaredSeeds = generateBaseSquaredSeeds;
-module.exports.generateExponantialSeeds = generateExponantialSeeds;
+module.exports.generateExponentialSeeds = generateExponentialSeeds;

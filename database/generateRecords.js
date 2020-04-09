@@ -1,10 +1,12 @@
 
-// const generateExponantialSeeds = require('./customSetsFromBaseUpTo32.js')
+const generateExponentialSeeds = require('./customSetsUpTo32')
 // const urls1k =  require('download1kImages')
+const products = generateProducts(26, 5)
 
-function generateProductIDs(base, power){
-  let justIDs = generateExponantialSeeds(base,power);
-  let products = appendImageURLStoProducts(10, justIDs)
+function generateProducts(base, power){
+  let justIDs = generateExponentialSeeds(base,power);
+  let products = appendImageURLStoProducts(10, justIDs);
+  return products;
 }
 
 function appendImageURLStoProducts(numberOfUrlsPerRecord, productIDs){
@@ -22,7 +24,7 @@ function chooseRandomURLs(urls, max = 10){
   
   let number = Math.floor(Math.random() * (max + 1)) 
   for(var i = 0; i < number; i++){
-    let j = Math.floor(Math.random() * (urls.length))
+    let j = Math.floor(Math.random() * (urls))
     urlSet += (urls[j])
   }
   return urlSet;
@@ -30,5 +32,8 @@ function chooseRandomURLs(urls, max = 10){
 
 
 
-let testRandom = chooseRandomURLs(null, )
+let testRandom = chooseRandomURLs(null, 10)
 console.log(testRandom)
+console.log('first product', products[0])
+
+module.exports.products = products;

@@ -6,7 +6,7 @@ const fs = require('fs')
 const loremPicsum = "https://picsum.photos/seed/"
 const imgWidth = 320
 const imgHeight = 240
-const generateBaseSeeds = require('./customSetsFromBaseUpTo32.js')
+const generateBaseSeeds = require('./customSetsUpTo32.js')
 
 var urls1k = buildUrls(generateBaseSeeds());
 
