@@ -44,64 +44,43 @@ class App extends React.Component{
   componentDidMount(){
     this.getProductImages((err, result) =>{
       if (err){
-        console.log(err)
-        
-        
+        console.log(err) 
       }else {
         // console.log("no error in here")
         var pictures = [result.data.image1, result.data.image2, result.data.image3, result.data.image4, result.data.image5, result.data.image6];
         this.setState({pics: pictures, main: result.data.image1, productName: result.data.productName, productId: result.data.id});
         localStorage.updated = true;
-        
-        
-      }
-      
+      }     
     })
   localStorage.productID = 1;
-
   setInterval(() => { this.updateMyComponent(); }, 1000);
-  
  }
     
 
-  
-  
-      updateMyComponent(){
-        
-        let { productId } = this.state;
-        // console.log("product id:", productId)
-        let localProductID = parseInt(localStorage.productID);
-        // console.log("localProductID:", parseInt(localProductID))
+  updateMyComponent(){
     
-        if (productId !== localProductID) {
-          // console.log("the if statement")
-          this.setState({productId: localProductID})
-          this.getProductImages((err, result) =>{
-            if (err){
-              console.log(err)
-              
-              
-            }else {
-
-              // console.log("no error in here")
-              var pictures = [result.data.image1, result.data.image2, result.data.image3, result.data.image4, result.data.image5, result.data.image6];
-              this.setState({pics: pictures,main: result.data.image1, productName: result.data.productName, productId: result.data.id});
-              localStorage.updated = true;
-              
-            }
-            
-          });
-        } 
-        
-          // setInterval(() => { {
-          // this.updateMyComponent(); }}, 1000);
-
-        // 
-    
-      }
-    
-  
-    
+    let { productId } = this.state;
+    // console.log("product id:", productId)
+    let localProductID = parseInt(localStorage.productID);
+    // console.log("localProductID:", parseInt(localProductID))
+    if (productId !== localProductID) {
+      // console.log("the if statement")
+        this.setState({productId: localProductID})
+        this.getProductImages((err, result) =>{
+          if (err){
+            console.log(err)       
+          }else {
+            // console.log("no error in here")
+            var pictures = [result.data.image1, result.data.image2, result.data.image3, result.data.image4, result.data.image5, result.data.image6];
+            this.setState({pics: pictures,main: result.data.image1, productName: result.data.productName, productId: result.data.id});
+            localStorage.updated = true;          
+          }     
+        });
+    }    
+    // setInterval(() => { {
+    // this.updateMyComponent(); }}, 1000);  
+  } 
+      
   // getPictureId(callback){
   //   Axios.get(`http:localhost:8083/getProductId/${this.state.productId}`)
   //   .then((result)=>{
@@ -111,8 +90,6 @@ class App extends React.Component{
   //     callback(error, null);
   //   })
   // }
-  
-  
   handleOnClick(event){
     //console.log(localStorage.mainPicturePath)
     event.preventDefault();
@@ -137,7 +114,6 @@ class App extends React.Component{
     this.setState({pics}) 
   }
 
-  
   renderBackground(){
     const { picturePopupShowed } = this.state //false
     if (!picturePopupShowed){
@@ -185,9 +161,9 @@ class App extends React.Component{
 
 // make opacity of background and have modal pop up;
 
-  render(){
-      const { picturePopupShowed } = this.state;
-      return(
+render(){
+  const { picturePopupShowed } = this.state;
+    return(
 
           <div >
             

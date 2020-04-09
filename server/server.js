@@ -12,16 +12,27 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
 
+const urlNameAdds = {
+    prefix: '../images/',
+    suffix: '.png'
+}
+
 app.get('/getPhotos/:id', (req, res) =>{
     getPhotos(req.params.id, (err, result)=>{
         if (err){
             res.send("you have an error bro")
         }else{
+            //database result will be a single string at key image
+            //add images array to the result
+            //push each url name to the new images array then send result
+            result[0].images = [];
+            let urlsString = [result[0].image];
+            for(var i = 0; i < urlsString.length; i+=2){
+              let url = urlNameAdds.prefix + urlsString[i] + urlsString[i + 1] + urlNameAdds.suffix
+                result[0].images.push(url)
+            }
             
-
-            let productName = result[0].productName
-            let pictures = [result[0].image1, result[0].image2, result[0].image3, result[0].image4, result[0].image5, result[0].image6];
-        
+              
             res.send(result[0]);
         }
     })

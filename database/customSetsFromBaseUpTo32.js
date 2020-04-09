@@ -1,6 +1,3 @@
-
-
-
 const chars = [ 
     '1','2','3','4','5','6','a','b','c','d','e',
     'f','g','h','i','j','k','l','m','n','o','p',
@@ -72,4 +69,5 @@ function evenPowerSets(seeds){
 // console.log(test1Million[0], test1Million[675], test1Million[(676 * 676 * 26 - 1 )])
 // console.log(test1Million.length)
 
-module.exports.generateBaseSeeds = generateBaseSeeds;
+module.exports.generateBaseSquaredSeeds = generateBaseSquaredSeeds;
+module.exports.generateExponantialSeeds = generateExponantialSeeds;

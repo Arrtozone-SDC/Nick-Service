@@ -3,8 +3,18 @@
 // const urls1k =  require('download1kImages')
 
 function generateProductIDs(base, power){
-  let justIds = generateExponantialSeeds(base,power);
+  let justIDs = generateExponantialSeeds(base,power);
+  let products = appendImageURLStoProducts(10, justIDs)
+}
 
+function appendImageURLStoProducts(numberOfUrlsPerRecord, productIDs){
+  let keyValPairs = []
+    for(productID of productIDs){
+     let object = {productID : chooseRandomURLs(numberOfUrlsPerRecord)}
+     keyValPairs.push(object);
+  }
+  console.log('productIDs and url pairs list is ', keyValPairs.length, ' items long')
+  return keyValPairs;
 }
 
 function chooseRandomURLs(urls, max = 10){
@@ -17,6 +27,8 @@ function chooseRandomURLs(urls, max = 10){
   }
   return urlSet;
 }
+
+
 
 let testRandom = chooseRandomURLs(null, )
 console.log(testRandom)
