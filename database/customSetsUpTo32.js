@@ -21,6 +21,7 @@ function generateBaseSquaredSeeds(base = 32){
 
 function generateExponentialSeeds(base, desiredPowerOfBase = 5){
     let pow = desiredPowerOfBase;
+    console.log(`generating ${Math.pow(base, pow)} seeds`)
     if(pow === 0){
        return [];
     }
@@ -35,12 +36,13 @@ function generateExponentialSeeds(base, desiredPowerOfBase = 5){
     if(pow === 4){
       finalSet = squaredSet;
         finalSet = evenPowerSets(finalSet.slice());
-      console.log('even power sets done')
+      // console.log('even power sets done')
       return finalSet;
     }else if (pow === 5){
        let baseChars = chars.slice(32 - base)
-       console.log(baseChars)
+      //  console.log(baseChars)
        let penultSet = evenPowerSets(squaredSet)
+      //  console.log('even power sets done')
        for(char of baseChars){
           for(set of penultSet){
             finalSet.push(char + set);
@@ -49,23 +51,25 @@ function generateExponentialSeeds(base, desiredPowerOfBase = 5){
     }
       
   function evenPowerSets(seeds){
-    console.log('Even Power Sets')
+    // console.log('Even Power Sets')
     let newSquaredSet = generateBaseSquaredSeeds(base);
     let workingSet = [];
-    console.log(seeds.length)
-    console.log('newSquaredSet', newSquaredSet.length)
+    // console.log(seeds.length)
+    // console.log('newSquaredSet', newSquaredSet.length)
         for(pair of seeds){
             for(twin of newSquaredSet){
             workingSet.push(pair + twin);
         }
     }
-    console.log(workingSet.length)
+    // console.log(workingSet.length)
     return workingSet;
     }
+    console.log(`done generating seeds.  final count = ${finalSet.length}`)
     return finalSet;
+
 }
 
-// let test1Million = generateExponantialSeeds(26,5)
+// let test1Million = generateExponentialSeeds(26,5)
 // console.log(test1Million[0], test1Million[675], test1Million[(676 * 676 * 26 - 1 )])
 // console.log(test1Million.length)
 

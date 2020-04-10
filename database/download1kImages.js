@@ -50,6 +50,6 @@ function downloadAll(all = urls1k){
 //  downloadAll(urls1k);
 
 
-module.exports.urls1k = urls1k
+// module.exports.urls1k = urls1k
 module.exports.downloadAll = downloadAll;
 
